@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratoire Dr Zoulai — Laboratoire d'analyses médicales</title>
+  <meta name="description" content="Laboratoire Dr Zoulai — Un accueil chaleureux et un personnel dévoué, pour des analyses médicales sans stress.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lab: {
+              50: '#f7f1fb', 100: '#ecdff6', 200: '#d8bfec', 300: '#b98add',
+              500: '#8c3fc0', 600: '#712fa0', 700: '#582481', 800: '#411a61', 900: '#2c1141'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            hand: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    .hand { font-family: 'Caveat', cursive; }
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(247,241,251,0.98) 0%, rgba(247,241,251,0.9) 38%, rgba(247,241,251,0.18) 70%, rgba(255,255,255,0) 100%),
+        url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1800&q=85') center/cover;
+    }
+    @media(max-width:767px) {
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(247,241,251,0.98) 0%, rgba(247,241,251,0.9) 55%, rgba(247,241,251,0.18) 100%),
+          url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1800&q=85') center/cover;
+      }
+    }
+    .logo-mono {
+      background: linear-gradient(135deg, #712fa0, #411a61);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-700 bg-white">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-lab-100">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="logo-mono h-12 w-12 rounded-2xl flex items-center justify-center text-white font-extrabold text-lg tracking-wide">DZ</span>
+      <span class="font-extrabold text-lab-900 text-lg leading-tight hidden sm:block">Laboratoire Dr Zoulai</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+      <a href="#" class="text-lab-700 border-b-2 border-lab-600 py-7">Accueil</a>
+      <a href="#analyses" class="hover:text-lab-600 transition">Nos analyses</a>
+      <a href="#about" class="hover:text-lab-600 transition">À propos</a>
+      <a href="#domicile" class="hover:text-lab-600 transition">Prélèvement à domicile</a>
+      <a href="#results" class="hover:text-lab-600 transition">Résultats</a>
+      <a href="#contact" class="hover:text-lab-600 transition">Contact</a>
+    </nav>
+
+    <a href="#contact" class="hidden sm:flex items-center gap-2 bg-lab-700 hover:bg-lab-800 text-white font-semibold text-sm px-5 py-3 rounded-full transition">
+      📅 &nbsp; Prendre rendez-vous
+    </a>
+
+    <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-xl border border-lab-200 text-lab-700 text-2xl" aria-label="Menu">☰</button>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-lab-100 bg-white px-5 py-5">
+    <nav class="flex flex-col gap-4 text-sm font-medium">
+      <a href="#">Accueil</a>
+      <a href="#analyses">Nos analyses</a>
+      <a href="#about">À propos</a>
+      <a href="#domicile">Prélèvement à domicile</a>
+      <a href="#results">Résultats</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="bg-lab-700 text-white text-center py-3 rounded-full">Prendre rendez-vous</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero min-h-[570px] flex items-center">
+  <div class="max-w-7xl mx-auto w-full px-5 lg:px-8 py-20">
+    <div class="max-w-2xl">
+      <p class="uppercase tracking-[.18em] text-lab-600 font-bold text-sm">Humain avant tout</p>
+      <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.06] text-lab-900">
+        Laboratoire <span class="text-lab-700">Dr Zoulai</span>
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl leading-relaxed text-lab-800 max-w-xl">
+        Un accueil chaleureux et un personnel dévoué, pour des analyses médicales sans stress.
+      </p>
+
+      <div class="mt-7 flex flex-wrap gap-6 text-sm">
+        <span class="flex items-center gap-2"><span class="text-2xl">🛡</span><span>Fiabilité<br>des résultats</span></span>
+        <span class="flex items-center gap-2"><span class="text-2xl">◷</span><span><b>Rapidité</b><br>de traitement</span></span>
+        <span class="flex items-center gap-2"><span class="text-2xl">♡</span><span>Équipe<br>qualifiée</span></span>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#analyses" class="bg-lab-700 hover:bg-lab-800 text-white font-semibold px-7 py-3.5 rounded-full text-center transition">
+          Découvrir nos analyses →
+        </a>
+        <a href="#contact" class="bg-white/90 border border-lab-600 text-lab-700 font-semibold px-7 py-3.5 rounded-full text-center">
+          📅 &nbsp; Prendre rendez-vous
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-lab-50 border-y border-lab-100">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-8 grid grid-cols-2 md:grid-cols-5 gap-7">
+    <div class="text-center"><div class="mx-auto w-14 h-14 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">♨</div><p class="mt-3 text-sm">Analyses médicales<br>complètes</p></div>
+    <div class="text-center"><div class="mx-auto w-14 h-14 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">◷</div><p class="mt-3 text-sm">Résultats rapides<br>et sécurisés</p></div>
+    <div class="text-center"><div class="mx-auto w-14 h-14 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">♢</div><p class="mt-3 text-sm">Respect des normes<br>et de la qualité</p></div>
+    <div class="text-center"><div class="mx-auto w-14 h-14 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">♧</div><p class="mt-3 text-sm">Une équipe de<br>professionnels à votre écoute</p></div>
+    <div class="text-center"><div class="mx-auto w-14 h-14 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">⌖</div><p class="mt-3 text-sm">Proche de vous<br>à Baraki</p></div>
+  </div>
+</section>
+
+<section id="about" class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+  <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <div class="w-full h-[310px] sm:h-[420px] rounded-3xl logo-mono flex items-center justify-center">
+      <span class="text-white font-extrabold text-7xl sm:text-8xl tracking-wide">DZ</span>
+    </div>
+    <div>
+      <p class="uppercase tracking-[.18em] text-lab-600 font-bold text-sm">À propos de nous</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-lab-900">Un laboratoire de confiance au service de votre santé</h2>
+      <p class="mt-5 leading-7 text-slate-600">
+        Le laboratoire du Dr Zoulai est reconnu pour la gentillesse et le professionnalisme de son personnel, offrant un service propre, rapide et bienveillant à chaque patient.
+      </p>
+      <ul class="mt-6 space-y-3 text-sm">
+        <li>● &nbsp; Respect des normes internationales</li>
+        <li>● &nbsp; Confidentialité de vos résultats</li>
+        <li>● &nbsp; Accompagnement personnalisé</li>
+      </ul>
+      <p class="hand text-3xl text-lab-600 mt-7">Votre santé est notre engagement ♡</p>
+    </div>
+  </div>
+</section>
+
+<section id="analyses" class="bg-lab-50 py-16 lg:py-20">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="uppercase tracking-[.18em] text-lab-600 font-bold text-sm">Nos analyses</p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-lab-900">Nos services d'analyses médicales</h2>
+      <p class="mt-3 text-slate-600">Nous réalisons une large gamme d'analyses pour répondre à tous vos besoins.</p>
+    </div>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+            <article class="bg-white p-6 rounded-2xl shadow-sm border border-lab-100 hover:-translate-y-1 transition">
+        <div class="w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">●</div>
+        <h3 class="mt-5 font-bold text-lab-900">Biologie générale</h3>
+        <p class="mt-2 text-sm text-slate-500">NFS, glycémie, bilan lipidique...</p>
+        <a href="#" class="inline-block mt-5 text-sm font-bold text-lab-600">En savoir plus →</a>
+      </article>
+      <article class="bg-white p-6 rounded-2xl shadow-sm border border-lab-100 hover:-translate-y-1 transition">
+        <div class="w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">⌁</div>
+        <h3 class="mt-5 font-bold text-lab-900">Bilan hormonal</h3>
+        <p class="mt-2 text-sm text-slate-500">Thyroïde, hormones, fertilité...</p>
+        <a href="#" class="inline-block mt-5 text-sm font-bold text-lab-600">En savoir plus →</a>
+      </article>
+      <article class="bg-white p-6 rounded-2xl shadow-sm border border-lab-100 hover:-translate-y-1 transition">
+        <div class="w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">✣</div>
+        <h3 class="mt-5 font-bold text-lab-900">Sérologies</h3>
+        <p class="mt-2 text-sm text-slate-500">Hépatites, VIH, infections...</p>
+        <a href="#" class="inline-block mt-5 text-sm font-bold text-lab-600">En savoir plus →</a>
+      </article>
+      <article class="bg-white p-6 rounded-2xl shadow-sm border border-lab-100 hover:-translate-y-1 transition">
+        <div class="w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">▢</div>
+        <h3 class="mt-5 font-bold text-lab-900">Analyse d'urine</h3>
+        <p class="mt-2 text-sm text-slate-500">ECBU, bandelette urinaire...</p>
+        <a href="#" class="inline-block mt-5 text-sm font-bold text-lab-600">En savoir plus →</a>
+      </article>
+      <article class="bg-white p-6 rounded-2xl shadow-sm border border-lab-100 hover:-translate-y-1 transition">
+        <div class="w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center text-2xl">♧</div>
+        <h3 class="mt-5 font-bold text-lab-900">Parasitologie</h3>
+        <p class="mt-2 text-sm text-slate-500">Examen des selles...</p>
+        <a href="#" class="inline-block mt-5 text-sm font-bold text-lab-600">En savoir plus →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="domicile" class="max-w-7xl mx-auto px-5 lg:px-8 py-12">
+  <div class="overflow-hidden rounded-3xl bg-gradient-to-r from-lab-50 via-white to-lab-100 border border-lab-100">
+    <div class="grid lg:grid-cols-2 items-center">
+      <div class="p-8 lg:p-12">
+        <div class="flex gap-4">
+          <div class="w-14 h-14 shrink-0 rounded-full bg-lab-700 text-white flex items-center justify-center text-2xl">⌂</div>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-lab-900">Prélèvement à domicile</h2>
+            <p class="mt-1 text-slate-600">Un service pratique et sécurisé, pour votre confort.</p>
+          </div>
+        </div>
+        <ul class="mt-5 space-y-2 text-sm">
+          <li>✓ Rapide et flexible</li>
+          <li>✓ Personnel qualifié</li>
+          <li>✓ Sur toute la région de Baraki</li>
+        </ul>
+        <a href="#contact" class="inline-block mt-6 bg-lab-700 text-white px-6 py-3 rounded-full font-semibold">En savoir plus →</a>
+      </div>
+      <div class="w-full h-72 lg:h-80 logo-mono flex items-center justify-center">
+        <span class="text-white/90 text-6xl">⌂</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results" class="max-w-7xl mx-auto px-5 lg:px-8 pb-16">
+  <div class="text-center">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-lab-900">Comment ça marche ?</h2>
+    <p class="mt-2 text-slate-500">Un processus simple et rapide pour vos analyses.</p>
+  </div>
+  <div class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="text-center"><div class="mx-auto w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center font-bold">1</div><h3 class="mt-3 font-bold text-lab-900">Prise de rendez-vous</h3><p class="text-xs text-slate-500 mt-1">En ligne ou par téléphone</p></div>
+    <div class="text-center"><div class="mx-auto w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center font-bold">2</div><h3 class="mt-3 font-bold text-lab-900">Prélèvement</h3><p class="text-xs text-slate-500 mt-1">Au laboratoire ou à domicile</p></div>
+    <div class="text-center"><div class="mx-auto w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center font-bold">3</div><h3 class="mt-3 font-bold text-lab-900">Analyse</h3><p class="text-xs text-slate-500 mt-1">Avec un équipement moderne</p></div>
+    <div class="text-center"><div class="mx-auto w-12 h-12 rounded-full bg-lab-100 text-lab-700 flex items-center justify-center font-bold">4</div><h3 class="mt-3 font-bold text-lab-900">Résultats</h3><p class="text-xs text-slate-500 mt-1">Rapides et sécurisés</p></div>
+  </div>
+</section>
+
+<section id="contact" class="bg-lab-50 py-16">
+  <div class="max-w-3xl mx-auto px-5 text-center">
+    <p class="uppercase tracking-[.18em] text-lab-600 font-bold text-sm">Contact</p>
+    <h2 class="mt-2 text-3xl font-extrabold text-lab-900">Prenez rendez-vous</h2>
+    <p class="mt-3 text-slate-600">Baraki</p>
+    <p class="mt-1 text-slate-500 text-sm">Lun–Jeu, Sam–Dim 7h30–16h30 · Fermé le vendredi</p>
+    <div class="mt-7 flex flex-col sm:flex-row justify-center gap-3">
+      <a href="tel:+213558410700" class="bg-lab-700 text-white px-7 py-3 rounded-full font-semibold">☎ +213 558 41 07 00</a>
+      <a href="mailto:contact@zoulai.dz" class="bg-white border border-lab-600 text-lab-700 px-7 py-3 rounded-full font-semibold">✉ Nous écrire</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-lab-900 text-white">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-10">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-7">
+      <div class="flex items-center gap-3">
+        <span class="logo-mono h-14 w-14 rounded-2xl flex items-center justify-center text-white font-extrabold">DZ</span>
+        <span class="font-bold">Laboratoire Dr Zoulai</span>
+      </div>
+      <p class="hand text-2xl text-lab-100">À vos côtés pour une meilleure santé ♡</p>
+      <a href="#contact" class="border border-white/60 hover:bg-white hover:text-lab-900 px-6 py-3 rounded-full font-semibold transition">📅 &nbsp; Prendre rendez-vous</a>
+    </div>
+    <div class="mt-8 pt-6 border-t border-white/15 flex flex-col md:flex-row justify-between gap-4 text-xs text-lab-100">
+      <p>© 2025 Laboratoire Dr Zoulai. Tous droits réservés.</p>
+      <div class="flex gap-5">
+        <a href="#">Accueil</a>
+        <a href="#analyses">Nos analyses</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.add('hidden'));
+  });
+</script>
+</body>
+</html>
