@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Lab Admin</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#0EA5E9',
+                        dark: '#0F172A'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+<div class="min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar"
+        class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+
+        <!-- Logo -->
+        <div class="h-20 flex items-center px-6 border-b border-slate-200">
+            <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center">
+                <i data-lucide="flask-conical"></i>
+            </div>
+            <div class="ml-3">
+                <h1 class="font-bold text-lg text-slate-900">LABO</h1>
+                <p class="text-xs text-slate-400">Medical Laboratory</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="p-4 space-y-1">
+
+            <p class="text-xs font-semibold text-slate-400 uppercase px-3 mb-3">General</p>
+
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="layout-dashboard" class="w-5"></i> Dashboard
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="users" class="w-5"></i> Patients
+                <span class="ml-auto bg-slate-100 px-2 py-1 rounded-lg text-xs">248</span>
+            </a>
+
+            <!-- Appointments link active -->
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl bg-blue-50 text-primary font-medium">
+                <i data-lucide="calendar-days" class="w-5"></i> Appointments
+                <span class="ml-auto bg-blue-100 text-primary px-2 py-1 rounded-lg text-xs">12</span>
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="test-tube" class="w-5"></i> Analyses
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="file-check-2" class="w-5"></i> Results
+            </a>
+
+            <p class="text-xs font-semibold text-slate-400 uppercase px-3 mt-7 mb-3">Management</p>
+
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="stethoscope" class="w-5"></i> Doctors
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="credit-card" class="w-5"></i> Payments
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="bar-chart-3" class="w-5"></i> Reports
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100">
+                <i data-lucide="settings" class="w-5"></i> Settings
+            </a>
+
+        </nav>
+
+        <!-- User -->
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t bg-white">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary font-bold">ZA</div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-medium text-sm truncate">Admin</p>
+                    <p class="text-xs text-slate-400 truncate">admin@labcare.dz</p>
+                </div>
+                <button><i data-lucide="log-out" class="w-5 text-slate-400"></i></button>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <div class="flex-1 min-w-0">
+
+        <!-- HEADER -->
+        <header class="h-20 bg-white border-b flex items-center justify-between px-4 lg:px-8">
+
+            <div class="flex items-center gap-4">
+                <button id="menuBtn" class="lg:hidden"><i data-lucide="menu"></i></button>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Appointments</h2>
+                    <p class="text-sm text-slate-400 hidden sm:block">Manage all scheduled appointments</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+
+                <!-- Search -->
+                <div class="hidden md:flex items-center bg-slate-100 rounded-xl px-3">
+                    <i data-lucide="search" class="w-4 text-slate-400"></i>
+                    <input type="text" placeholder="Search appointments..." class="bg-transparent border-0 outline-none px-3 py-2 text-sm w-40">
+                </div>
+
+                <!-- Notification -->
+                <button class="relative w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center">
+                    <i data-lucide="bell" class="w-5"></i>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+
+                <!-- Profile -->
+                <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold">ZA</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <main class="p-4 lg:p-8">
+
+            <!-- HEADER ACTIONS -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">Appointment List</h1>
+                    <p class="text-slate-500 mt-1">View and manage all scheduled patient appointments.</p>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="flex items-center justify-center gap-2 bg-primary hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-medium">
+                        <i data-lucide="plus" class="w-5"></i> New Appointment
+                    </button>
+                    <button class="flex items-center justify-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 px-5 py-3 rounded-xl font-medium">
+                        <i data-lucide="download" class="w-5"></i> Export
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- STATISTICS CARDS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
+
+                <!-- Total Appointments -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-sm text-slate-500">Total Appointments</p>
+                            <h3 class="text-3xl font-bold mt-2">156</h3>
+                            <p class="text-sm text-green-600 mt-2">↑ 8.2% this month</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-primary flex items-center justify-center">
+                            <i data-lucide="calendar-days"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Appointments -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-sm text-slate-500">Today's Appointments</p>
+                            <h3 class="text-3xl font-bold mt-2">24</h3>
+                            <p class="text-sm text-blue-600 mt-2">4 remaining</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center">
+                            <i data-lucide="calendar-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-sm text-slate-500">Completed</p>
+                            <h3 class="text-3xl font-bold mt-2">18</h3>
+                            <p class="text-sm text-green-600 mt-2">↑ 12% from yesterday</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending / Waiting -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-sm text-slate-500">Pending / Waiting</p>
+                            <h3 class="text-3xl font-bold mt-2">6</h3>
+                            <p class="text-sm text-orange-600 mt-2">Needs attention</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
+                            <i data-lucide="clock-3"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- APPOINTMENTS TABLE -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+
+                        <thead class="bg-slate-50">
+                            <tr class="text-left text-slate-500">
+                                <th class="px-5 py-3 font-medium">Patient</th>
+                                <th class="px-5 py-3 font-medium">Analysis</th>
+                                <th class="px-5 py-3 font-medium">Date</th>
+                                <th class="px-5 py-3 font-medium">Time</th>
+                                <th class="px-5 py-3 font-medium">Status</th>
+                                <th class="px-5 py-3 font-medium text-right">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y">
+
+                            <!-- Appointment 1 -->
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-blue-100 text-primary flex items-center justify-center font-semibold">AM</div>
+                                        <div>
+                                            <p class="font-medium">Ahmed Mansouri</p>
+                                            <p class="text-xs text-slate-400">#PAT-00241</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-4">Blood Test</td>
+                                <td class="px-5 py-4">2026-09-09</td>
+                                <td class="px-5 py-4">09:30</td>
+                                <td class="px-5 py-4">
+                                    <span class="px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs">Completed</span>
+                                </td>
+                                <td class="px-5 py-4 text-right">
+                                    <button class="text-slate-400 hover:text-primary mr-2"><i data-lucide="eye" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-blue-600 mr-2"><i data-lucide="edit-2" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600"><i data-lucide="trash-2" class="w-4"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Appointment 2 -->
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-semibold">SK</div>
+                                        <div>
+                                            <p class="font-medium">Sarah Kaci</p>
+                                            <p class="text-xs text-slate-400">#PAT-00242</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-4">Hormonal Test</td>
+                                <td class="px-5 py-4">2026-09-09</td>
+                                <td class="px-5 py-4">10:15</td>
+                                <td class="px-5 py-4">
+                                    <span class="px-3 py-1 rounded-full bg-yellow-50 text-yellow-600 text-xs">In Progress</span>
+                                </td>
+                                <td class="px-5 py-4 text-right">
+                                    <button class="text-slate-400 hover:text-primary mr-2"><i data-lucide="eye" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-blue-600 mr-2"><i data-lucide="edit-2" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600"><i data-lucide="trash-2" class="w-4"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Appointment 3 -->
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-semibold">YB</div>
+                                        <div>
+                                            <p class="font-medium">Yacine Benali</p>
+                                            <p class="text-xs text-slate-400">#PAT-00243</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-4">COVID / PCR</td>
+                                <td class="px-5 py-4">2026-09-09</td>
+                                <td class="px-5 py-4">11:00</td>
+                                <td class="px-5 py-4">
+                                    <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs">Scheduled</span>
+                                </td>
+                                <td class="px-5 py-4 text-right">
+                                    <button class="text-slate-400 hover:text-primary mr-2"><i data-lucide="eye" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-blue-600 mr-2"><i data-lucide="edit-2" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600"><i data-lucide="trash-2" class="w-4"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Appointment 4 -->
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-semibold">NM</div>
+                                        <div>
+                                            <p class="font-medium">Nadia Merabet</p>
+                                            <p class="text-xs text-slate-400">#PAT-00244</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-4">Cholesterol</td>
+                                <td class="px-5 py-4">2026-09-09</td>
+                                <td class="px-5 py-4">11:45</td>
+                                <td class="px-5 py-4">
+                                    <span class="px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs">Waiting</span>
+                                </td>
+                                <td class="px-5 py-4 text-right">
+                                    <button class="text-slate-400 hover:text-primary mr-2"><i data-lucide="eye" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-blue-600 mr-2"><i data-lucide="edit-2" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600"><i data-lucide="trash-2" class="w-4"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Appointment 5 -->
+                            <tr>
+                                <td class="px-5 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-semibold">RB</div>
+                                        <div>
+                                            <p class="font-medium">Rachid Boudiaf</p>
+                                            <p class="text-xs text-slate-400">#PAT-00245</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-4">X-Ray</td>
+                                <td class="px-5 py-4">2026-09-10</td>
+                                <td class="px-5 py-4">09:00</td>
+                                <td class="px-5 py-4">
+                                    <span class="px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs">Cancelled</span>
+                                </td>
+                                <td class="px-5 py-4 text-right">
+                                    <button class="text-slate-400 hover:text-primary mr-2"><i data-lucide="eye" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-blue-600 mr-2"><i data-lucide="edit-2" class="w-4"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600"><i data-lucide="trash-2" class="w-4"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="px-5 py-4 border-t border-slate-200 flex items-center justify-between">
+                    <p class="text-sm text-slate-500">Showing 1-5 of 156 appointments</p>
+                    <div class="flex gap-1">
+                        <button class="px-3 py-1 rounded border border-slate-200 text-slate-400 hover:bg-slate-50 text-sm">Prev</button>
+                        <button class="px-3 py-1 rounded bg-primary text-white text-sm">1</button>
+                        <button class="px-3 py-1 rounded border border-slate-200 hover:bg-slate-50 text-sm">2</button>
+                        <button class="px-3 py-1 rounded border border-slate-200 hover:bg-slate-50 text-sm">3</button>
+                        <button class="px-3 py-1 rounded border border-slate-200 text-slate-400 hover:bg-slate-50 text-sm">Next</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<!-- MOBILE OVERLAY -->
+<div id="overlay" class="fixed inset-0 bg-black/30 z-40 hidden lg:hidden"></div>
+
+
+<script>
+    lucide.createIcons();
+
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menuBtn = document.getElementById("menuBtn");
+
+    menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+    });
+</script>
+
+</body>
+</html>
